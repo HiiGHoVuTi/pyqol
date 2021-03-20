@@ -196,7 +196,7 @@ for i in fib[:20]:
 
 ## `BitStorage`
 
-This lets you store custom datatypes, giving you access to bitwise storage. To define thoe datatypes, all you need is a dict listing the properties and their allocated number of bits, then you can generate entities of that type, and use masks to get properties fast.
+This lets you store custom datatypes, giving you access to bitwise storage. To define those datatypes, all you need is a dict listing the properties and their allocated number of bits, then you can generate entities of that type, and use masks to get properties fast.
 ```py
 # define the type
 ChessPiece = BitStorage({
