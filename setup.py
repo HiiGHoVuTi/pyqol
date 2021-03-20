@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyqol",
-    version="0.1.0.0",
+    version="0.1.1.0",
     author="Maxime",
     author_email="emixampons@gmail.com",
     description="A Pack of useful python QoL changes",
