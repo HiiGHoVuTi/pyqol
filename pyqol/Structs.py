@@ -156,3 +156,32 @@ class Stream():
         else:
             self.generators.append(Stream.Generator(1, lambda: other))
         return self
+
+
+class BitStorage():
+    def __init__(self, **properties):
+        self.properties = properties
+        self.generate_masks()
+    def get_mask(self, key):
+        start = 0
+        for name, count in self.properties.items():
+            if name == key:
+                mask = sum(2**i for i in I(count)) << start
+                return mask, start
+            start += count
+    def generate_masks(self):
+        self.masks = {}
+        for key in self.properties:
+            self.masks[key] = self.get_mask(key)
+    def get(self, binstr, key):
+        mask, offset = self.masks.get(key)
+        return (binstr & mask) >> offset
+    def new(self, **properties):
+        res = ""
+        for key in self.properties:
+            length, val = self.properties[key], properties[key]
+            res = "{:0{}b}".format(val, length)[-length:] + res
+        return int(res, 2)
+
+
+
