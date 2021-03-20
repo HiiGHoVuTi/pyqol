@@ -194,6 +194,23 @@ for i in fib[:20]:
     print(i) # 1, 1, 2, 3, 5, ....
 ```
 
+## `BitStorage`
+
+This lets you store custom datatypes, giving you access to bitwise storage. To define thoe datatypes, all you need is a dict listing the properties and their allocated number of bits, then you can generate entities of that type, and use masks to get properties fast.
+```py
+# define the type
+ChessPiece = BitStorage({
+    "color": 1,
+    "kind": 3, 
+})
+white_queen = ChessPiece.new({
+    "color": 0b0,
+    "kind": 0b111,
+})
+color = ChessPiece.get(white_queen, "color")
+white_queen == 0b0111
+```
+
 # `.FP`
 
 ## `Function`
